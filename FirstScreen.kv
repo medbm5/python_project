@@ -1,0 +1,19 @@
+<FirstScreen>:
+    FloatLayout:
+        Button:
+            id: log_in_button
+            size_hint: .9, .05
+            pos_hint: {"top": .3, "center_x": .5}
+            text: "Sign In"
+            on_release:
+                root.parent.current = "signIn"
+
+        Button:
+            id: create_account_button
+            size_hint: .9, .05
+            pos_hint: {"top": .225, "center_x": .5}
+            text: "Create Account"
+            on_release:
+                root.parent.current = "signUp"
+
+

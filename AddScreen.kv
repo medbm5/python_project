@@ -1,0 +1,45 @@
+
+<AddScreen>:
+    
+    BoxLayout:
+        size_hint:.8,.8
+        pos_hint:{"center_x":.5,"center_y":.5}
+        spacing: dp(50)
+        orientation:'vertical'
+        
+        FloatLayout:
+            MDTextField:
+                id: name
+                size_hint: .9 ,.1
+                normal_color: 0.6,0.6,0.6,0.4
+                icon_right: "email-outline"
+                pos_hint: {"center_x": .5, "top": .7}
+                hint_text: "Titre"
+                
+            MDTextFieldRect:
+                id: Description
+                normal_color: 0.6,0.6,0.6,0.4
+                size_hint: .9 ,.1
+                pos_hint: {"center_x": .5, "top": .575}
+                hint_text: "Description"
+                
+
+            MDFillRoundFlatButton:
+                text: "photo"
+                size_hint: .4 ,.05
+                pos_hint: {"center_x": .75, "top": .45}
+                on_release:
+                    # Need to refer to the FirebaseLoginScreen
+                    app.file_manager_open()
+
+            MDFillRoundFlatButton:
+                id: sign_in_button
+                text:"ajouter"
+                size_hint: .4 ,.05
+                pos_hint: {"center_x": .25, "top": .45}
+                on_release:
+                    app.add_product()
+
+                    
+    
+

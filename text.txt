@@ -1,0 +1,62 @@
+#:import MDIconButton kivymd.uix.button.MDIconButton
+#:import MDFillRoundFlatButton kivymd.uix.button.MDFillRoundFlatButton
+#:import MDTextFieldRound kivymd.uix.textfield.MDTextFieldRound
+#:import MDBottomNavigation kivymd.uix.bottomnavigation
+#:import MDFloatingActionButton kivymd.uix.button.MDFloatingActionButton
+
+<SignIn>:
+    FloatLayout:
+        Button:
+            size_hint: .4, .05
+            pos_hint: {"center_x": .25, "top": .225}
+            text: "Back"
+            on_release:
+                root.parent.current = "first_screen"
+
+        MDTextFieldRound :
+            id: email
+            color_mode: "custom"
+            normal_color: 0.6,0.6,0.6,0.4
+            color_active: 0.6,0.6,0.6,0.5
+            icon_right: "email-outline"
+
+
+        MDTextFieldRound :
+            id: password
+            color_mode: "custom"
+            normal_color: 0.6,0.6,0.6,0.4
+            color_active: 0.6,0.6,0.6,0.5
+            icon_right: "key-outline"
+            password: True
+        Button:
+            text: "Reset Password"
+            size_hint: .4 ,.05
+            pos_hint: {"center_x": .25, "top": .45}
+            on_release:
+                # Need to refer to the FirebaseLoginScreen
+                app.reset_password(email.text)
+                sign_in_button.opacity = 0
+                sign_in_button.disabled = True
+
+
+        Button:
+            text: "Sign In"
+            size_hint: .4 ,.05
+            pos_hint: {"center_x": .75, "top": .45}
+            on_release:
+                # Need to refer to the FirebaseLoginScreen
+                app.sign_in(email.text, password.text)
+                sign_in_button.opacity = 0
+                sign_in_button.disabled = True
+
+        Button:
+            id: sign_in_button
+            text: "Sign up"
+            size_hint: .2 ,.05
+            pos_hint: {"right": .85, "center_y": .1}
+            opacity: 0
+            disabled: True
+            on_release:
+                root.parent.current = "create_account_screen"
+                root.parent.parent.ids.create_account_screen.ids.email.text = email.text
+                root.parent.parent.ids.create_account_screen.ids.password.text = password.text

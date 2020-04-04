@@ -1,0 +1,49 @@
+<HomeScreen>:
+    BoxLayout:
+        orientation:'vertical'
+        MDToolbar:
+            id:toolbar
+            title:"My App"
+            md_bg_color: app.theme_cls.primary_color
+        
+        MDBottomNavigation:
+            MDBottomNavigationItem:
+                text:"Home"
+                id:Item
+                icon:"home"
+                name:"screen1"
+                
+                BoxLayout:
+                    orientation: "vertical"
+                    spacing: "10dp"
+                    ScrollView:
+                        GridLayout:
+                            cols:2
+                            id:home_fragment
+                            row_default_height: (self.width - self.cols*self.spacing[0])/self.cols
+                            size_hint_y: None
+                            height: self.minimum_height
+                            padding: dp(4), dp(4)
+                            spacing: dp(4)
+                            
+
+            MDBottomNavigationItem:
+                padding: dp(4), dp(4)
+                id:profile_fragment
+                text:"Profile"
+                icon:"face-profile-woman"
+                name:"screen2"
+                BoxLayout:
+                    orientation: "vertical"
+                    spacing: "10dp"
+                    ScrollView:
+                        BoxLayout:
+                            orientation: "vertical"
+                            cols:1
+                            id:profile_fragment
+                            
+                    
+            
+
+
+                    

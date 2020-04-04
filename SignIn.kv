@@ -1,0 +1,41 @@
+#:import MDTextFieldRound kivymd.uix.textfield.MDTextFieldRound
+#:import MDFillRoundFlatButton kivymd.uix.button.MDFillRoundFlatButton
+<SignIn>:
+    FloatLayout:
+        MDTextFieldRound:
+            id: email
+            size_hint: .9 ,.1
+            normal_color: 0.6,0.6,0.6,0.4
+            icon_left: "email-outline"
+            icon_right:""
+            pos_hint: {"center_x": .5, "top": .7}
+            hint_text: "Email"
+            
+        MDTextFieldRound:
+            id: password
+            normal_color: 0.6,0.6,0.6,0.4
+            size_hint: .9 ,.1
+            pos_hint: {"center_x": .5, "top": .575}
+            hint_text: "Password"
+            icon_left:"account-key"
+            icon_right:""
+            password: True
+            
+
+        MDFillRoundFlatButton:
+            text: "Sign In"
+            size_hint: .4 ,.05
+            pos_hint: {"center_x": .75, "top": .45}
+            on_release:
+                # Need to refer to the FirebaseLoginScreen
+                app.sign_in(email.text, password.text)
+                sign_in_button.opacity = 0
+                sign_in_button.disabled = True
+
+        MDFillRoundFlatButton:
+            id: sign_in_button
+            text:"back"
+            size_hint: .4 ,.05
+            pos_hint: {"center_x": .25, "top": .45}
+            on_release:
+                root.parent.current = "first_screen"
